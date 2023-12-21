@@ -1,0 +1,38 @@
+{
+    "1300": {
+        "msg": {
+            "EN": "City has been created",
+            "AR": "تم إنشاء المدينة"
+        }
+    },
+    "1301": {
+        "msg": {
+            "EN": "City has been updated",
+            "AR": "تم تحديث المدينة"
+        }
+    },
+    "1302": {
+        "msg": {
+            "EN": "City has been deleted",
+            "AR":"تم حذف المدينة"
+        }
+    },
+    "1303": {
+        "msg": {
+            "EN": "City with id has been found",
+            "AR": "تم العثور على المدينة بالمعرف"
+        }
+    },
+    "1304": {
+        "msg": {
+            "EN": "Listing all Cities",
+            "AR": "سرد جميع المدن"
+        }
+    },
+    "1305": {
+        "msg": {
+            "EN": "Listing all name Cities",
+            "AR": "سرد جميع أسماء المدن"
+        }
+    }
+}

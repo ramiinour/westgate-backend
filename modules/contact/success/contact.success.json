@@ -1,0 +1,38 @@
+{
+    "300": {
+        "msg": {
+            "EN":"contact has been created",
+            "AR":"response in arabic"
+        }
+    },
+    "301": {
+        "msg": {
+            "EN":"contact has been updated",
+            "AR":"response in arabic"
+        }
+    },
+    "302": {
+        "msg": {
+            "EN":"contact has been deleted",
+            "AR":"response in arabic"
+        }
+    },
+    "303": {
+        "msg": {
+            "EN":"contact with id has been found",
+            "AR":"response in arabic"
+        }
+    },
+    "304": {
+        "msg": {
+            "EN":"Listing all contact",
+            "AR":"response in arabic"
+        }
+    },
+    "310": {
+        "msg": {
+            "EN":"Message sent successfully",
+            "AR":"Message sent successfully"
+        }
+    }
+}

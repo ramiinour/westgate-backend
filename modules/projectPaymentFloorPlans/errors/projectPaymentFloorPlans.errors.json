@@ -1,0 +1,20 @@
+{
+    "900": {
+        "msg": {
+            "EN":"make sure all the field is required",
+            "AR":"جميع الحقول مطلوبة"
+        }
+    },
+    "905": {
+        "msg": {
+            "EN":"project does not exist",
+            "AR":"المشروع غير موجود"
+        }
+    },
+    "3067": {
+        "msg": {
+            "EN":"some Error occurred while processing your request. please try again, if the problem persist, Please contact us",
+            "AR":"حدث خطأ ما أثناء معالجة طلبك. يرجى المحاولة مرة أخرى ، إذا استمرت المشكلة ، يرجى الاتصال بنا"
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "520": {
+        "msg": {
+            "EN": "Nothing matches your search please try a different search.",
+                "AR": "لا توجد معلومات تطابق بحثك الرجاء استحدام بحث اخر"
+        }
+    },
+    "3067": {
+        "msg": {
+            "EN": "some Error occurred while processing your request. please try again, if the problem persist, Please contact us",
+                "AR": "حدث خطأ ما أثناء معالجة طلبك. يرجى المحاولة مرة أخرى ، إذا استمرت المشكلة ، يرجى الاتصال بنا"
+        }
+    }
+}

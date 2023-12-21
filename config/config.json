@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "howdy",
+    "password": "Howdy!1202",
+    "database": "westgate",
+    "host": "howdy.c0shg5mha0rb.me-south-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "howdy",
+    "password": "Howdy!1202",
+    "database": "westgate",
+    "host": "howdy.c0shg5mha0rb.me-south-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  }
+}

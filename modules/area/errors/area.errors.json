@@ -1,0 +1,50 @@
+{
+    "650": {
+        "msg": {
+            "EN":"please provide title, description, Price, developer, lifestyle, completionDate and titleType",
+            "AR":"يرجى تقديم العنوان والوصف والمراجع الخاصة بالملكية وسعر العقار"
+        }
+    },
+    "651": {
+        "msg": {
+            "EN":"near by location must have a name",
+            "AR":"يجب أن يكون بالقرب من الموقع اسمًا"
+        }
+    },
+    "652": {
+        "msg": {
+            "EN":"102 error occurred",
+            "AR":"حدث خطأ 102"
+        }
+    },
+    "653": {
+        "msg": {
+            "EN":"No Projects Found",
+            "AR":"No Projects Found"
+        }
+    },
+    "654": {
+        "msg": {
+            "EN":"Sorry! Project with this id does not exist",
+            "AR":"Sorry! Project with this id does not exist"
+        }
+    },
+    "655": {
+        "msg": {
+            "EN":"Sorry! Project with this id is disabled/deleted",
+            "AR":"Sorry! Project with this id is disabled/deleted"
+        }
+    },
+    "3067": {
+        "msg": {
+            "EN":"some Error occurred while processing your request. please try again, if the problem persist, Please contact us",
+            "AR":"حدث خطأ ما أثناء معالجة طلبك. يرجى المحاولة مرة أخرى ، إذا استمرت المشكلة ، يرجى الاتصال بنا"
+        }
+    },
+    "656": {
+        "msg": {
+            "EN":"Area Name Already Exists",
+            "AR": "اسم المنطقة موجود بالفعل"
+        }
+    }
+}

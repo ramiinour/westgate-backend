@@ -1,0 +1,14 @@
+{
+    "400":{
+        "msg":{
+            "EN":"Please provide name, email, phoneNum, category, propertyType, countryId, cityId",
+            "AR":"يرجى تقديم الاسم والبريد الإلكتروني ورقم الهاتف والفئة ونوع العقار ومعرف البلد ومعرف المدينة"
+        }
+    },
+    "3067": {
+        "msg": {
+            "EN":"some Error occurred while processing your request. please try again, if the problem persist, Please contact us",
+            "AR":"حدث خطأ ما أثناء معالجة طلبك. يرجى المحاولة مرة أخرى ، إذا استمرت المشكلة ، يرجى الاتصال بنا"
+        }
+    }
+}

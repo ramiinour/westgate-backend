@@ -1,0 +1,38 @@
+{
+    "1000": {
+        "msg": {
+            "EN": "Area has been created",
+            "AR": "تم إنشاء المنطقة"
+        }
+    },
+    "1001": {
+        "msg": {
+            "EN": "Area has been updated",
+            "AR": "تم تحديث المنطقة"
+        }
+    },
+    "1002": {
+        "msg": {
+            "EN": "Area has been deleted",
+            "AR":"تم حذف المنطقة"
+        }
+    },
+    "1003": {
+        "msg": {
+            "EN": "Area with id has been found",
+            "AR": "تم العثور على المنطقة بالمعرف"
+        }
+    },
+    "1004": {
+        "msg": {
+            "EN": "Listing all Area",
+            "AR": "سرد جميع المناطق"
+        }
+    },
+    "1005": {
+        "msg": {
+            "EN": "Popular Areas",
+            "AR": "المناطق الشعبية"
+        }
+    }
+}

@@ -1,0 +1,139 @@
+{
+    "languagesAllowed": {
+        "en": "EN",
+        "ar": "AR"
+    },
+    "amenities": [
+        "balcony",
+        "closeToMetro",
+        "highFloor",
+        "fitted",
+        "InvestmentProperty",
+        "landmarkView",
+        "kitchenAppliances",
+        "gatedCommunity",
+        "openKitchen",
+        "vastuCompliant",
+        "builtWardrobes",
+        "airConditioning",
+        "amenitiesGym",
+        "landmarkView",
+        "centralAC"
+    ],
+    "specifications": [
+        "size",
+        "beds",
+        "baths",
+        "parking",
+        "developers",
+        "type",
+        "vacant"
+    ],
+    "propertyTypes": [
+        "Apartment",
+        "Villa",
+        "Townhouse",
+        "Hotel Apartment",
+        "Duplex",
+        "Penthouse",
+        "Mansion",
+        "Office",
+        "Shop",
+        "Residential Plot",
+        "Commercial Plot"
+    ],
+    "projectTypes": [
+        "Apartment",
+        "Villa",
+        "Townhouse",
+        "Hotel Apartment",
+        "Duplex",
+        "Penthouse",
+        "Mansion",
+        "Office",
+        "Shop",
+        "Residential Plot",
+        "Commercial Plot"
+    ],
+    "projectStatus": [
+        "In progress",
+        "Ready to use"
+    ],
+    "projectFloorPlans": [
+        {
+            "id": 1,
+            "name": "Studio",
+            "abbr": "St"
+        },
+        {
+            "id": 3,
+            "name": "1-bedroom",
+            "abbr": "1 BR"
+        },
+        {
+            "id": 4,
+            "name": "2-bedrooms",
+            "abbr": "2 BR"
+        },
+        {
+            "id": 5,
+            "name": "3-bedrooms",
+            "abbr": "3 BR"
+        },
+        {
+            "id": 6,
+            "name": "4-bedrooms",
+            "abbr": "4BR"
+        }
+    ],
+    "unitTypes": [
+        "Apartment ",
+        "Apartment B",
+        "Duplex A",
+        "Duplex B"
+    ],
+    "paymentPlans": [
+        {
+            "id": 1,
+            "name": "Booking"
+        },
+        {
+            "id": 2,
+            "name": "Construction"
+        },
+        {
+            "id": 3,
+            "name": "Handover"
+        },
+        {
+            "id": 4,
+            "name": "Down Payment"
+        },
+        {
+            "id": 5,
+            "name": "Completion"
+        },
+        {
+            "id": 6,
+            "name": "After Months From Handover"
+        },
+        {
+            "id": 7,
+            "name": "Installment"
+        }
+    ],
+    "quartersIsCompleted":{
+       "0":["Q1"],
+       "1":["Q1"],
+       "2":["Q1"],
+       "3":["Q1","Q2"],
+       "4":["Q1","Q2"],
+       "5":["Q1","Q2"],
+       "6":["Q1","Q2","Q3"],
+       "7":["Q1","Q2","Q3"],
+       "8":["Q1","Q2","Q3"],
+       "9":["Q1","Q2","Q3","Q4"],
+       "10":["Q1","Q2","Q3","Q4"],
+       "11":["Q1","Q2","Q3","Q4"]
+    }
+}

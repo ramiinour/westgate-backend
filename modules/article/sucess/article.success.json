@@ -1,0 +1,33 @@
+{
+    "701": {
+        "msg": {
+            "EN":"article has been created",
+            "AR":"تم إنشاء المقالة"
+        }
+    },
+    "702": {
+        "msg": {
+            "EN":"article has been updated",
+            "AR":"تم تعديل المقالة"
+        }
+    },
+    "703": {
+        "msg": {
+            "EN":"done",
+            "AR":"تم"
+        }
+    },
+    "704": {
+        "msg": {
+            "EN":"article has been deleted",
+            "AR":"تم حذف المقالة"
+        }
+    },
+    "705": {
+        "msg": {
+            "EN":"Category article has been created",
+            "AR":"تم انشاء الفئة "
+        }
+    }
+  
+}

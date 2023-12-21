@@ -1,0 +1,57 @@
+{
+    "901": {
+        "msg": {
+            "EN":"project has been created",
+            "AR":"تم إنشاء مشروع"
+        }
+    },
+    "902": {
+        "msg": {
+            "EN":"project has been updated",
+            "AR":"تم تعديل مشروع"
+        }
+    },
+    "903": {
+        "msg": {
+            "EN":"done",
+            "AR":"تم"
+        }
+    },
+    "904": {
+        "msg": {
+            "EN":"project has been deleted",
+            "AR":"تم حذف مشروع"
+        }
+    },
+    "906": {
+        "msg": {
+            "EN":"project has been activated",
+            "AR":"تم تنشيط مشروع"
+        }
+    },
+    "907": {
+        "msg": {
+            "EN": "projec now is featured ",
+            "AR": "المشروع الان مشروع مميز"
+        }
+    },
+    "908": {
+        "msg": {
+            "EN": "project does not exist ",
+            "AR": "المشروع غير موجود"
+        }
+    },
+    "909": {
+        "msg": {
+            "EN": "agent does not exist ",
+            "AR": "الوكيل غير موجود"
+        }
+    },
+    "910": {
+        "msg": {
+            "EN":"project has been published",
+            "AR":"تم نشر المشروع"
+        }
+    }
+  
+}

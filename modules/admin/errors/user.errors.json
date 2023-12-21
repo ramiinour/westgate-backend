@@ -1,0 +1,26 @@
+{
+    "100": {
+        "msg": {
+            "EN":"Please Provide Email And Password",
+            "AR":"يرجى تقديم البريد الإلكتروني وكلمة المرور"
+        }
+    },
+    "101": {
+        "msg": {
+            "EN":"Please Provide Valid Email",
+            "AR":"يرجى تقديم البريد الإلكتروني وكلمة المرور"
+        }
+    },
+    "102": {
+        "msg": {
+            "EN":"Please Provide Valid Password",
+            "AR":"يرجى تقديم البريد الإلكتروني وكلمة المرور"
+        }
+    },
+    "3067": {
+        "msg": {
+            "EN":"some Error occurred while processing your request. please try again, if the problem persist, Please contact us",
+            "AR":"حدث خطأ ما أثناء معالجة طلبك. يرجى المحاولة مرة أخرى ، إذا استمرت المشكلة ، يرجى الاتصال بنا"
+        }
+    }
+}

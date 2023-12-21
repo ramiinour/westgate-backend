@@ -1,0 +1,38 @@
+{
+    "100": {
+        "msg": {
+            "EN":"Please Provide Email And Password",
+            "AR":"يرجى تقديم البريد الإلكتروني وكلمة المرور"
+        }
+    },
+    "101": {
+        "msg": {
+            "EN":"Error occurred while Signing up",
+            "AR":"حدث خطأ أثناء التسجيل"
+        }
+    },
+    "102": {
+        "msg": {
+            "EN":"incorrect email or password",
+            "AR":"بريد أو كلمة مرورغير صحيحة"
+        }
+    },
+    "103": {
+        "msg": {
+            "EN":"User not found",
+            "AR":"لم يتم العثور على المستخدم"
+        }
+    },
+    "104": {
+        "msg": {
+            "EN":"User with this email already exist",
+            "AR":"المستخدم مع هذا البريد الإلكتروني موجود بالفعل"
+        }
+    },
+    "3067": {
+        "msg": {
+            "EN":"some Error occurred while processing your request. please try again, if the problem persist, Please contact us",
+            "AR":"حدث خطأ ما أثناء معالجة طلبك. يرجى المحاولة مرة أخرى ، إذا استمرت المشكلة ، يرجى الاتصال بنا"
+        }
+    }
+}

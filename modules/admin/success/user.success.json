@@ -1,0 +1,45 @@
+{
+    "300": {
+        "msg": {
+            "EN":"user has been created",
+            "AR":"تم إنشاء المستخدم"
+        }
+    },
+    "301": {
+        "msg": {
+            "EN":"user has been updated",
+            "AR":"تم تحديث المستخدم"
+        }
+    },
+    "302": {
+        "msg": {
+            "EN":"user has been deleted",
+            "AR":"تم حذف المستخدم"
+        }
+    },
+    "303": {
+        "msg": {
+            "EN":"user with id has been found",
+            "AR":"تم العثور على المستخدم بالمعرف"
+        }
+    },
+   
+    "304": {
+        "msg": {
+            "EN":"Listing all users",
+            "AR":"سرد كافة المستخدمين"
+        }
+    },
+    "305": {
+        "msg": {
+            "EN":"user logged in",
+            "AR":"قام المستخدم بتسجيل الدخول"
+        }
+    },
+    "306": {
+        "msg": {
+            "EN":"user with token has been found",
+            "AR":"تم العثور على مستخدم برمز مميز"
+        }
+    }
+}

@@ -1,0 +1,672 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Contact {
+  contactId Int      @id @default(autoincrement())
+  name      String?  @db.VarChar(255)
+  email     String   @db.VarChar(255)
+  phone     String?  @db.VarChar(255)
+  message   String?  @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([name], map: "contact_name")
+}
+
+// property models while using sequelize end
+model Amenities {
+  id     Int    @id @default(autoincrement())
+  key    String @db.VarChar(255)
+  status Int    @default(1) // 0 Inactive, 1 Active
+
+  createdAt DateTime              @default(now())
+  updatedAt DateTime              @updatedAt
+  project   AmenitiesProject[]
+  property  AmenitiesProperties[]
+
+  @@index([id], map: "amenities_amenities_id")
+}
+
+model AmenitiesProperties {
+  id          Int @id @default(autoincrement())
+  AmenitiesId Int
+  propertyId  Int
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  property  Property  @relation(fields: [propertyId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  amenities Amenities @relation(fields: [AmenitiesId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model Payments {
+  id     Int    @id @default(autoincrement())
+  key    String @db.VarChar(255)
+  status Int    @default(1) // 0 Inactive, 1 Active
+
+  createdAt DateTime              @default(now())
+  updatedAt DateTime              @updatedAt
+  project   ProjectPaymentTypes[]
+
+  @@index([id], map: "amenities_amenities_id")
+}
+
+model ProjectPaymentTypes {
+  id         Int  @id @default(autoincrement())
+  paymentIds Int?
+  projectId  Int?
+
+  project   Project?  @relation(fields: [projectId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  payments  Payments? @relation(fields: [paymentIds], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model NearBy {
+  id          Int     @id @default(autoincrement())
+  name        String  @db.VarChar(255)
+  description String? @db.VarChar(255)
+  ratings     Float?
+  propertyId  Int
+  status      Int     @default(1) // 1 active, 0 Inactive
+
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([id], map: "near_by_nearby_id")
+}
+
+model NearBySchools {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(255)
+  description String?  @db.VarChar(255)
+  ratings     Float?
+  projectId   Int?
+  status      Int      @default(1) // 1 active, 0 Inactive
+  project     Project? @relation(fields: [projectId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Project {
+  id                            Int                   @id @default(autoincrement())
+  title                         String                @unique @db.VarChar(255)
+  description                   String?               @db.Text()
+  descImage                     String?               @default("200x200.png")
+  titleImage                    String?               @default("200x200.png")
+  brochureUrl                   String?               @default("")
+  floorPlansBrochureUrl         String?               @default("")
+  videoThumbnailUrl             String?               @default("")
+  videoUrl                      String?               @default("")
+  totalAmountOfUnits            String?               @default("")
+  phone                         String?               @db.VarChar(255)
+  //developer                     String?
+  lifestyle                     String?
+  completionDate                DateTime              @default(now())
+  titleType                     String?
+  attachment                    String?
+  //city                          String?  @db.VarChar(255)
+  type                          String?               @db.VarChar(255)
+  mainDescription               String?               @db.Text()
+  //country                       String?  @db.VarChar(255)
+  area                          Int?
+  amenitiesDescription          String?               @db.Text()
+  paybackDescription            String?               @db.Text()
+  isFeature                     Boolean               @default(false)
+  locationDescription           String?               @db.Text()
+  locationDescriptionImagesUrls String?
+  economicAppealDescription     String?               @db.Text()
+  economicAppealImagesUrls      String?
+  lat                           Float?
+  lon                           Float?
+  address                       String?
+  currency                      String?
+  mainPaymentPlanFirstNumber    Int?
+  mainPaymentPlanSecondNumber   Int?
+  handOverYear                  Int?
+  facebook                      String?
+  linkedin                      String?
+  handOverYearQuarter           String?
+  twitter                       String?
+  priceDescription              String?
+  status                        Int?                  @default(1) // 0 inactive 1-> active
+  price                         Int?
+  projectStatus                 Int?
+  teamMemberId                  Int
+  developerId                   Int?
+  areaId                        Int
+  cityId                        Int                   @default(1)
+  countryId                     Int                   @default(1)
+  teamMember                    Team                  @relation(fields: [teamMemberId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  ImagesProject                 ImagesProject[]
+  properties                    Property[]
+  NearByPlaces                  NearByPlace[]
+  amenities                     AmenitiesProject[]
+  payments                      ProjectPaymentTypes[]
+  NearBySchools                 NearBySchools[]
+  images                        ProjectImages[]
+  views                         ProjectView[]
+  buildings                     ProjectBuilding[]
+  projectPaymentPlans           ProjectPaymentPlan[]
+  projectFloorPlans             ProjectFloorPlan[]
+  mainImagesProject             MainImagesProject[]
+  createdAt                     DateTime              @default(now())
+  updatedAt                     DateTime              @updatedAt
+  developer                     Developer?             @relation(fields: [developerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  areaPlace                     Area                  @relation(fields: [areaId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  city                          City                  @relation(fields: [cityId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  country                       Country               @relation(fields: [countryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@index([title], map: "project_title")
+}
+
+model MainImagesProject {
+  id        Int     @id @default(autoincrement())
+  image     String
+  projectId Int
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model Property {
+  id                  Int                       @id @default(autoincrement())
+  projectId           Int?
+  title               String                    @unique @db.VarChar(255)
+  description         String                    @db.VarChar(10000)
+  propertyRef         String                    @db.VarChar(255)
+  propertyType        String?                   @db.VarChar(255)
+  propertyPrice       Float                     @default(0.00)
+  share               Int                       @default(0)
+  liked               Int                       @default(0)
+  followed            Int                       @default(0)
+  saved               Int                       @default(0)
+  isrent              Boolean                   @default(false)
+  isbuy               Boolean                   @default(false)
+  area                Float?
+  lat                 Float?
+  lon                 Float?
+  address             String?
+  zipCode             String?                   @db.VarChar(255)
+  //city                        String?  @db.VarChar(255)
+  //country                     String?  @db.VarChar(255)
+  phone               String                    @db.VarChar(255)
+  isPropertyOfTheDay  Boolean                   @default(false)
+  videoUrl            String?
+  facebook            String?
+  linkedin            String?
+  twitter             String?
+  averagePropertyLink String?
+  isFeature           Boolean                   @default(false)
+  currency            String?
+  propertySalesLink   String?
+  videoThumbnail      String?                   @db.Text()
+  status              Int                       @default(1) // 0 inactive 1-> active
+  developerId         Int                       @default(20)
+  areaId              Int                       @default(1)
+  teamMemberId        Int
+  cityId              Int                       @default(1)
+  countryId           Int                       @default(1)
+  teamMember          Team                      @relation(fields: [teamMemberId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  project             Project?                  @relation(fields: [projectId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  amenities           AmenitiesProperties[]
+  specification       SpecificationProperties[]
+  nearBy              NearBy[]
+  images              PropertyImages[]
+  developer           Developer                 @relation(fields: [developerId], references: [id])
+  areaPlace           Area                      @relation(fields: [areaId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  createdAt           DateTime                  @default(now())
+  updatedAt           DateTime                  @updatedAt
+  city                City                      @relation(fields: [cityId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  country             Country                   @relation(fields: [countryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@index([title], map: "property_title")
+}
+
+model ProjectImages {
+  id        Int      @id @default(autoincrement())
+  link      String
+  projectid Int
+  status    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  project Project @relation(fields: [projectid], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model AmenitiesProject {
+  id          Int @id @default(autoincrement())
+  AmenitiesId Int
+  projectid   Int
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  project   Project   @relation(fields: [projectid], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  amenities Amenities @relation(fields: [AmenitiesId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model ProjectView {
+  id        Int      @id @default(autoincrement())
+  name      String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  projectId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProjectBuilding {
+  id        Int      @id @default(autoincrement())
+  name      String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  projectId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model NearByPlace {
+  id        Int      @id @default(autoincrement())
+  name      String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  projectId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PropertyImages {
+  id         Int      @id @default(autoincrement())
+  link       String
+  propertyId Int
+  status     Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model SpecificationProperties {
+  id              Int    @id @default(autoincrement())
+  SpecificationId Int
+  propertyId      Int
+  answer          String @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  property      Property      @relation(fields: [propertyId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  specification Specification @relation(fields: [SpecificationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model Specification {
+  id        Int      @id @default(autoincrement())
+  key       String   @db.VarChar(255)
+  status    Int      @default(1) // 0 Inactive, 1 Active
+  rooms     String?  @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  property SpecificationProperties[]
+
+  @@index([id], map: "specification_specification_id")
+}
+
+// property models while using sequelize end
+model Team {
+  id          Int       @id @default(autoincrement())
+  firstName   String?   @db.VarChar(255)
+  lastName    String?   @db.VarChar(255)
+  email       String    @db.VarChar(255)
+  password    String    @db.VarChar(255)
+  phoneNumber String?   @db.VarChar(255)
+  cellNumber  String?   @db.VarChar(255)
+  gender      String?   @db.VarChar(255)
+  facebookUrl String?   @db.VarChar(255)
+  twitterUrl  String?   @db.VarChar(255)
+  googleUrl   String?   @db.VarChar(255)
+  description String?   @db.Text
+  address     String?   @db.Text
+  avatar      String?   @default("https://remarkestate.s3.me-south-1.amazonaws.com/profile/1688537854891-3.svg") @db.VarChar(255)
+  zipCode     String?   @db.VarChar(255)
+  dateOfBirth DateTime? @db.Date
+  status      Int       @default(1) // 0 inactive 1-> active
+  token       String?   @db.Text
+  position String? @db.VarChar(255) @default("NA")
+  experience Int? @default(0) 
+  websiteUrl  String? @db.VarChar(255)
+  linkedInUrl String? @db.VarChar(255)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  properties Property[]
+  project    Project[]
+  developer  AgentDeveloper[]
+  lead       Lead[]
+  area       AgentArea[]
+  languages Language[]
+
+  @@index([id], map: "team_team_id")
+}
+
+model Language{
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  lang String @db.VarChar(255) @unique
+
+  agents Team[]
+
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  role      Int? //
+  name      String?  @db.VarChar(255)
+  email     String   @db.VarChar(255)
+  password  String   @db.VarChar(255)
+  phone     String?  @db.VarChar(255)
+  status    Int      @default(1) // 0 inactive 1-> active
+  token     String?  @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // with specificatioPropert 1:n
+
+  @@index([name], map: "user_name")
+}
+
+model admin {
+  id         Int      @id @default(autoincrement())
+  firstName  String   @db.VarChar(250)
+  lastName   String   @db.VarChar(250)
+  email      String   @db.VarChar(250)
+  phone      String   @db.VarChar(250)
+  password   String   @db.VarChar(250)
+  avatar     String?  @default("https://remarkestate.s3.me-south-1.amazonaws.com/profile/1688537854891-3.svg") @db.VarChar(250)
+  department Int
+  createdon  DateTime @default(now()) @db.DateTime(0)
+  status     Int      @default(1) // 0 inactive 1-> active
+
+  @@index([department], map: "department")
+}
+
+model article {
+  id                Int             @id @default(autoincrement())
+  title             String          @db.VarChar(250)
+  description       String          @db.Text
+  address           String?         @db.Text
+  image             String          @default("") @db.VarChar(250)
+  createdon         DateTime        @default(now()) @db.DateTime(0)
+  videoUrl          String?         @default("") @db.VarChar(250)
+  articleCategoryId Int
+  articleCategory   ArticleCategory @relation(fields: [articleCategoryId], references: [id])
+}
+
+model ArticleCategory {
+  id      Int       @id @default(autoincrement())
+  name    String    @db.VarChar(50)
+  article article[]
+}
+
+model FloorPlans {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(250)
+  abbr String @db.VarChar(250)
+
+  projectFloorPlan ProjectFloorPlan[]
+}
+
+model PaymentPlans {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(250)
+
+  projectPaymentPlans ProjectPaymentPlan[]
+}
+
+model ProjectPaymentPlan {
+  id            Int          @id @default(autoincrement())
+  projectId     Int
+  paymentPlanId Int
+  key           Int
+  value         Int
+  project       Project      @relation(fields: [projectId], references: [id])
+  paymentPlan   PaymentPlans @relation(fields: [paymentPlanId], references: [id])
+}
+
+model ProjectFloorPlan {
+  id               Int                @id @default(autoincrement())
+  projectId        Int
+  floorPlanId      Int
+  unitType         String             @db.VarChar(250)
+  startingPrice    String             @db.VarChar(250)
+  area             String             @db.VarChar(250)
+  project          Project            @relation(fields: [projectId], references: [id])
+  floorPlan        FloorPlans         @relation(fields: [floorPlanId], references: [id])
+  imagesFloorPlans ImagesFloorPlans[]
+}
+
+model ImagesFloorPlans {
+  id     Int    @id @default(autoincrement())
+  images String @db.VarChar(250)
+
+  projectFloorPlanId Int
+
+  projectFloorPlans ProjectFloorPlan @relation(fields: [projectFloorPlanId], references: [id])
+}
+
+model ImagesProject {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(250)
+
+  projectId Int
+  project   Project @relation(fields: [projectId], references: [id])
+}
+
+model Subscription {
+  id        Int    @id @default(autoincrement())
+  firstName String @db.VarChar(250)
+  lastName  String @db.VarChar(250)
+  email     String @db.VarChar(250)
+  phone     String @db.VarChar(250)
+  status    Int    @default(1) // 0 inactive 1-> active
+}
+
+model ContactUs {
+  id      Int    @id @default(autoincrement())
+  name    String @db.VarChar(250)
+  message String @db.Text
+  email   String @db.VarChar(250)
+  phone   String @db.VarChar(250)
+}
+
+model Area {
+  id             Int             @id @default(autoincrement())
+  name           String          @unique @db.VarChar(250)
+  about          String          @db.Text
+  infrastructure String?         @db.Text
+  attractions    String?         @db.Text
+  mainImage      String          @db.VarChar(250)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  cityId         Int             @default(1)
+  city           City            @relation(fields: [cityId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  agent          AgentArea[]
+  areaImage      AreaImage[]
+  areaFeature    AreaFeature[]
+  developer      AreaDeveloper[]
+  project        Project[]
+  property       Property[]
+}
+
+model AreaImage {
+  id        Int      @id @default(autoincrement())
+  image     String   @db.VarChar(250)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  areaId    Int
+  area      Area     @relation(fields: [areaId], references: [id])
+}
+
+model AreaFeature {
+  id           Int            @id @default(autoincrement())
+  description  String         @db.Text
+  areaId       Int?
+  area         Area?          @relation(fields: [areaId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  featureImage FeatureImage[]
+}
+
+model FeatureImage {
+  id            Int          @id @default(autoincrement())
+  image         String       @db.VarChar(250)
+  areaFeatureId Int?
+  areaFeature   AreaFeature? @relation(fields: [areaFeatureId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model AreaDeveloper {
+  developerId Int
+  areaId      Int
+  area        Area      @relation(fields: [areaId], references: [id])
+  developer   Developer @relation(fields: [developerId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@id([areaId, developerId])
+}
+
+model Developer {
+  id                 Int              @id @default(autoincrement())
+  name               String           @unique @db.VarChar(250)
+  foundIn            String           @db.VarChar(250)
+  about              String           @db.Text
+  management         String?          @db.Text
+  economicAttractive String?          @db.Text
+  mainImage          String           @db.VarChar(250)
+  logo               String           @db.VarChar(250)
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+  agent              AgentDeveloper[]
+  developerImage     DeveloperImage[]
+  area               AreaDeveloper[]
+  project            Project[]
+  property           Property[]
+}
+
+model DeveloperImage {
+  id          Int       @id @default(autoincrement())
+  image       String    @db.VarChar(250)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  developerId Int
+  developer   Developer @relation(fields: [developerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model AgentDeveloper {
+  developerId Int
+  agentId     Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  agent       Team      @relation(fields: [agentId], references: [id])
+  developer   Developer @relation(fields: [developerId], references: [id])
+
+  @@id([developerId, agentId])
+}
+
+model AgentArea {
+  areaId    Int
+  agentId   Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  agent     Team     @relation(fields: [agentId], references: [id])
+  area      Area     @relation(fields: [areaId], references: [id])
+
+  @@id([areaId, agentId])
+}
+
+model City {
+  id           Int            @id @default(autoincrement())
+  name         String         @db.VarChar(250)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  countryId    Int
+  country      Country        @relation(fields: [countryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  area         Area[]
+  project      Project[]
+  property     Property[]
+  Consultation Consultation[]
+}
+
+model Country {
+  id           Int            @id @default(autoincrement())
+  name         String         @db.VarChar(250)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  city         City[]
+  property     Property[]
+  project      Project[]
+  Consultation Consultation[]
+}
+
+enum Category {
+  Rent
+  Sell
+}
+
+enum PropertyType {
+  Residential
+  Commercial
+}
+
+model Consultation {
+  id           Int          @id @default(autoincrement())
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  name         String       @db.VarChar(250)
+  email        String       @db.VarChar(250)
+  phoneNum     String       @db.VarChar(250)
+  category     Category?
+  propertyType PropertyType?
+  cityId       Int?          
+  city         City?         @relation(fields: [cityId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  Country      Country?     @relation(fields: [countryId], references: [id])
+  countryId    Int?
+}
+
+enum Status {
+  Qualified
+  No_Answer
+  Switch_off
+  Unqualified
+  Bad_timing
+  Deal
+  Lost
+  Pending
+}
+
+model Lead {
+  id           Int           @id @default(autoincrement())
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  name         String        @db.VarChar(250)
+  email        String        @db.VarChar(250)
+  phoneNum     String        @db.VarChar(250)
+  message      String        @db.VarChar(10000)
+  status       Status        @default(Pending)
+  teamMemberId Int
+  teamMember   Team          @relation(fields: [teamMemberId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  comments     LeadComment[]
+}
+
+model LeadComment {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  comment   String   @db.VarChar(10000)
+  leadId    Int
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}

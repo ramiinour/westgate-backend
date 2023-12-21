@@ -1,0 +1,50 @@
+{
+    "600": {
+        "msg": {
+            "EN": "Project has been created",
+                "AR": "تم إنشاء الخاصية"
+        }
+    },
+    "601": {
+        "msg": {
+            "EN": "Project has been updated",
+                "AR": "تم تحديث الخاصية"
+        }
+    },
+    "602": {
+        "msg": {
+            "EN": "Project has been deleted/disabled",
+                "AR": "تم حذف الخاصية"
+        }
+    },
+    "603": {
+        "msg": {
+            "EN": "Project with id has been found",
+                "AR": "تم العثور على خاصية بالمعرف"
+        }
+    },
+    "604": {
+        "msg": {
+            "EN": "Listing all Project",
+                "AR": "سرد جميع الممتلكات"
+        }
+    },
+    "605": {
+        "msg": {
+            "EN": "Listing Views",
+                "AR": "Listing Views"
+        }
+    },
+    "606": {
+        "msg": {
+            "EN": "Listing Buildings",
+                "AR": "Listing Buildings"
+        }
+    },
+    "607": {
+        "msg": {
+            "EN": "Listing paymentTypes",
+                "AR": "Listing paymentTypes"
+        }
+    }
+}

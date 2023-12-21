@@ -1,0 +1,38 @@
+{
+    "1200": {
+        "msg": {
+            "EN": "Country has been created",
+            "AR": "تم إنشاء البلد"
+        }
+    },
+    "1201": {
+        "msg": {
+            "EN": "Country has been updated",
+            "AR": "تم تحديث البلد"
+        }
+    },
+    "1202": {
+        "msg": {
+            "EN": "Country has been deleted",
+            "AR":"تم حذف البلد"
+        }
+    },
+    "1203": {
+        "msg": {
+            "EN": "Country with id has been found",
+            "AR": "تم العثور على البلد بالمعرف"
+        }
+    },
+    "1204": {
+        "msg": {
+            "EN": "Listing all Countries",
+            "AR": "سرد جميع البلدان"
+        }
+    },
+    "1205": {
+        "msg": {
+            "EN": "Listing all name Countries",
+            "AR": "سرد جميع أسماء البلدان"
+        }
+    }
+}

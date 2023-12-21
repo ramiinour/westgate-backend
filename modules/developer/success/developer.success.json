@@ -1,0 +1,38 @@
+{
+    "1100": {
+        "msg": {
+            "EN": "Developer has been created",
+            "AR": "تم إنشاء المطور"
+        }
+    },
+    "1101": {
+        "msg": {
+            "EN": "Developer has been updated",
+            "AR": "تم تحديث المطور"
+        }
+    },
+    "1102": {
+        "msg": {
+            "EN": "Developer has been deleted",
+            "AR":"تم حذف المطور"
+        }
+    },
+    "1103": {
+        "msg": {
+            "EN": "Developer with id has been found",
+            "AR": "تم العثور على المطور بالمعرف"
+        }
+    },
+    "1104": {
+        "msg": {
+            "EN": "Listing all Developers",
+            "AR": "سرد جميع المطورين"
+        }
+    },
+    "1105": {
+        "msg": {
+            "EN": "Listing all name Developers",
+            "AR": "سرد جميع أسماء المطورين"
+        }
+    }
+}

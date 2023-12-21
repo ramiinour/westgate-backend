@@ -1,0 +1,111 @@
+{
+    "500": {
+        "msg": {
+            "EN": "Property has been created",
+            "AR": "تم إنشاء الخاصية"
+        }
+    },
+    "501": {
+        "msg": {
+            "EN": "Property has been updated",
+            "AR": "تم تحديث الخاصية"
+        }
+    },
+    
+    "502": {
+        "msg": {
+            "EN": "Property has been deleted",
+            "AR": "تم حذف الخاصية"
+        }
+    },
+    "503": {
+        "msg": {
+            "EN": "Property with id has been found",
+            "AR": "تم العثور على خاصية بالمعرف"
+        }
+    },
+    "504": {
+        "msg": {
+            "EN": "Listing all Property",
+            "AR": "سرد جميع الممتلكات"
+        }
+    },
+    "505": {
+        "msg": {
+            "EN": "specifications created",
+            "AR": "تم إنشاء المواصفات"
+        }
+    },
+    "506": {
+        "msg": {
+            "EN": "Listing all Amenities",
+            "AR": " سرد جميع وسائل الراحة"
+        }
+    },
+    "507": {
+        "msg": {
+            "EN": "Listing all specifications",
+            "AR": " سرد جميع المواصفات"
+        }
+    },
+    "508": {
+        "msg": {
+            "EN": "Nearby has been updated",
+            "AR": " سرد جميع المواصفات"
+        }
+    },
+    "509": {
+        "msg": {
+            "EN": "Property retrieved successfully",
+            "AR": "Property retrieved successfully"
+        }
+    },
+    "510": {
+        "msg": {
+            "EN": "PropertyTypes",
+            "AR": "PropertyTypes"
+        }
+    },
+    "511": {
+        "msg": {
+            "EN": "property does not exist",
+            "AR": "الخاصية غير موجودة"
+        }
+    },
+    "512": {
+        "msg": {
+            "EN": "property now is property of day",
+            "AR": "الخاصية الان خاصية اليوم"
+        }
+    },
+    "513": {
+        "msg": {
+            "EN": "property now is featured ",
+            "AR": "الخاصية الان خاصية مميزة"
+        }
+    },
+    "514": {
+        "msg": {
+            "EN": "properties by types retrived successfully ",
+            "AR": "الخاصية الان خاصية مميزة"
+        }
+    },
+    "515": {
+        "msg": {
+            "EN": "email send successfully ",
+            "AR": "الخاصية الان خاصية مميزة"
+        }
+    },
+    "516": {
+        "msg": {
+            "EN": "Property has been published",
+            "AR": "لقد تم نشر الملكية"
+        }
+    },
+    "517":{
+        "msg":{
+            "EN":"Search results obtained",
+            "AR":"تم الحصول على نتائج البحث"
+        }
+    }
+}
