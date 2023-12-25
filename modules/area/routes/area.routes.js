@@ -18,6 +18,11 @@ module.exports = (app, version) => {
         // authenticate,
         areaController.getAllCountPageSort
     );
+    app.get(
+        version + moduleName + '/header',
+        // authenticate,
+        areaController.searchAreaHeader
+    );
 
     app.get(
         version + moduleName + '/id/:id',

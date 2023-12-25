@@ -1904,6 +1904,45 @@ const searchProject = async (req, res, next) => {
     }
 }
 
+const searchProjectHeader = async (req, res, next) => {
+    try {
+        const searchQuery = {
+            AND: [
+            ]
+        };
+
+        const sortObj = { createdAt: "desc" };
+
+        const properties = await prisma.project.findMany({
+            take: 5, // Only return 5 projects
+            where: {
+                ...searchQuery,
+                status: 1,
+            },
+                // Specify only the properties you want to include in the response
+                select: {
+                    id: true,
+                    title: true,
+                },
+
+            orderBy: sortObj,
+        });
+
+        return Response.sendResponse(
+            res, {
+            msg: '509',
+            data: {
+                projects: properties,
+            },
+            lang: req.params.lang
+        });
+
+    } catch (err) {
+        console.log(err);
+        return next({ msg: 3067 })
+    }
+}
+
 const getAllProjectsByIds = async(req,res,next) => {
     try{
         const {id} = req.query
@@ -1956,5 +1995,6 @@ module.exports = {
     publishProjectPaymentFloorPlanDraft,
     getAllProjectPaymentFloorPlanByAgentDraft,
     getAllProjectPaymentFloorPlanByArea,
-    getAllProjectsByIds
+    getAllProjectsByIds,
+    searchProjectHeader
 };

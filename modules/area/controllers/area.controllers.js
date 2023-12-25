@@ -126,6 +126,48 @@ const getAllCountPageSort = async (req, res, next) => {
 
 }
 
+const searchAreaHeader = async (req, res, next) => {
+    try {
+
+        const searchQuery = {
+            AND:[
+    
+            ]
+        }
+        const sortObj = { createdAt: "desc" };
+        const data = await prisma.area.findMany({
+            take: 5,
+            where:{
+                ...searchQuery,
+               
+            },
+            select:{
+                id:true,
+                name:true,
+            },
+            orderBy: sortObj,
+             
+
+        });
+         
+        return Response.sendResponse(res, {
+            msg: '703',
+            data: {
+                areas: data,
+
+            },
+            lang: req.params.lang
+        });
+
+
+    } catch(err) {
+        console.log(err)
+        return next({ msg: 3067 });
+    }
+    
+
+}
+
 const getNamesAreas = async (req, res, next) => {
     const { cityId } = req.query
     let query = {}
@@ -764,5 +806,6 @@ module.exports = {
     getNamesAreas,
     firstFiveAreas,
     getOnById,
-    getPopularAreas
+    getPopularAreas,
+    searchAreaHeader
 };
