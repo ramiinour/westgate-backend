@@ -855,7 +855,7 @@ const createProjectPaymentFloorPlan = async (req, res, next) => {
 
                 teamMember: {
                     connect: {
-                        id: teamMemberId? parseInt(teamMemberId):parseInt(req.user.id)
+                        id: teamMemberId && teamMemberId != -1? parseInt(teamMemberId):parseInt(req.user.id)
                     }
                 },
                 developer: {

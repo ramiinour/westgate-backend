@@ -35,7 +35,7 @@ const createProperty = async (req, res, next) => {
             // teamMemberId: req.user.id,
             teamMember: {
                 connect: {
-                    id: req.body.teamMemberId? parseInt(req.body.teamMemberId):parseInt(req.user.id)
+                    id: req.body.teamMemberId && req.body.teamMemberId != -1 ? parseInt(req.body.teamMemberId):parseInt(req.user.id)
                 },
             },
             phone: req.body.phone,
