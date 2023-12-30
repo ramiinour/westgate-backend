@@ -45,13 +45,19 @@ const createTeam = async (req, res, next) => {
             password: password,
             status: 1,
             area: {
-                create: req.body?.areaIds?.map(id => ({
+                create: req.body?.area?.map(id => ({
                     area: {
                         connect: {
                             id: parseInt(id),
                         },
                     }
                 }))
+            },
+            experience: req.body.experience || 0,
+            languages: {
+                connect: req.body?.languages?.map(id => ({
+                    id: parseInt(id),
+                })),
             },
         };
         const check_email = await Prisma.Team.findFirst({
@@ -71,18 +77,7 @@ const createTeam = async (req, res, next) => {
         } else {
             created_team = await Prisma.Team.create({
                 data: team,
-                include: {
-                    area: {
-                        include: {
-                            area: {
-                                select: {
-                                    id: true,
-                                    name: true
-                                }
-                            }
-                        }
-                    }
-                }
+              
             });
         }
         delete created_team.password;
@@ -189,7 +184,9 @@ const findOneTeam = async (req, res, next) => {
                             }
                         }
                     }
-                }
+                },
+
+                languages: true
 
             }
         });
@@ -286,6 +283,34 @@ const findAllTeam = async (req, res, next) => {
                 page: req.params.page,
                 count: parseInt(team_count.length),
                 totalPages: totalPages
+            },
+            lang: req.params.lang
+        });
+
+    } catch (err) {
+        return next({ msg: 3067 })
+    }
+}
+
+
+const findAllNameAndId = async (req, res, next) => {
+    try {
+        let get_all_team = await Prisma.team.findMany({
+            where: {
+                status: 1,
+            },
+            select: {
+                id:true,
+                firstName:true,
+                lastName:true,
+            }
+          
+        });
+        return Response.sendResponse(
+            res, {
+            msg: '404',
+            data: {
+                team: get_all_team,
             },
             lang: req.params.lang
         });
@@ -503,5 +528,6 @@ module.exports = {
     deleteTeam,
     loginController,
     getFiveRandomAgents,
-    getNameIdAgent
+    getNameIdAgent,
+    findAllNameAndId
 };

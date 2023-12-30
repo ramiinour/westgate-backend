@@ -9,7 +9,8 @@ const Response = require('../../../configuration/config.response'),
 
 const createProperty = async (req, res, next) => {
     try {
-
+        
+    
         const { title, description, propertyRef, propertyPrice, phone, area,
             cityId, countryId, developerId, areaId,
         } = req.body;
@@ -34,7 +35,7 @@ const createProperty = async (req, res, next) => {
             // teamMemberId: req.user.id,
             teamMember: {
                 connect: {
-                    id: parseInt(req.user.id)
+                    id: req.body.teamMemberId? parseInt(req.body.teamMemberId):parseInt(req.user.id)
                 },
             },
             phone: req.body.phone,

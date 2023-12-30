@@ -31,6 +31,11 @@ module.exports = (app, version) => {
         getTeamController.loginController
     );
 
+    
+    app.get(
+        version + moduleName + '/team/allNamesAndId',
+        getTeamController.findAllNameAndId
+    );
     // profile with token
     app.get(
         version + module + '/my-profile',
@@ -56,6 +61,8 @@ module.exports = (app, version) => {
         version + moduleName + '/team/:count/:page/:sort',
         getTeamController.findAllTeam
     );
+
+    
 
     app.put(
         version + moduleName + '/team/:id',

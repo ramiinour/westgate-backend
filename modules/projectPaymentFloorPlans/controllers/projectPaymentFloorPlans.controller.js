@@ -752,6 +752,8 @@ const getOneProjectPaymentFloorPlanByIdDraft = async (req, res, next) => {
 
 
 const createProjectPaymentFloorPlan = async (req, res, next) => {
+
+
     const { floorPlans, paymentPlans, images,
         title,
         description,
@@ -797,24 +799,13 @@ const createProjectPaymentFloorPlan = async (req, res, next) => {
         areaId,
         countryId,
         cityId,
-        mainImagesProject
+        mainImagesProject,
+        teamMemberId
     } = req.body
 
 
 
     try {
-
-        let addDeveloper = {};
-
-        if(developerId){
-            addDeveloper = {
-                developer: {
-                    connect: {
-                        id: parseInt(developerId)
-                    }
-                },
-            }
-        }
 
 
         const dataProject = await prisma.project.create({
@@ -864,12 +855,14 @@ const createProjectPaymentFloorPlan = async (req, res, next) => {
 
                 teamMember: {
                     connect: {
-                        id: req.user.id
+                        id: teamMemberId? parseInt(teamMemberId):parseInt(req.user.id)
                     }
                 },
-
-                ...addDeveloper,
-                
+                developer: {
+                    connect: {
+                        id: parseInt(developerId)
+                    }
+                },
 
                 areaPlace: {
                     connect: {
@@ -1904,45 +1897,6 @@ const searchProject = async (req, res, next) => {
     }
 }
 
-const searchProjectHeader = async (req, res, next) => {
-    try {
-        const searchQuery = {
-            AND: [
-            ]
-        };
-
-        const sortObj = { createdAt: "desc" };
-
-        const properties = await prisma.project.findMany({
-            take: 5, // Only return 5 projects
-            where: {
-                ...searchQuery,
-                status: 1,
-            },
-                // Specify only the properties you want to include in the response
-                select: {
-                    id: true,
-                    title: true,
-                },
-
-            orderBy: sortObj,
-        });
-
-        return Response.sendResponse(
-            res, {
-            msg: '509',
-            data: {
-                projects: properties,
-            },
-            lang: req.params.lang
-        });
-
-    } catch (err) {
-        console.log(err);
-        return next({ msg: 3067 })
-    }
-}
-
 const getAllProjectsByIds = async(req,res,next) => {
     try{
         const {id} = req.query
@@ -1995,6 +1949,5 @@ module.exports = {
     publishProjectPaymentFloorPlanDraft,
     getAllProjectPaymentFloorPlanByAgentDraft,
     getAllProjectPaymentFloorPlanByArea,
-    getAllProjectsByIds,
-    searchProjectHeader
+    getAllProjectsByIds
 };
