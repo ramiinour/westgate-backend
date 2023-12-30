@@ -65,13 +65,6 @@ module.exports = (app, version) => {
         // authenticate,
         projectPaymentFloorPlan.searchProject
     )
-
-    app.get(
-        version + moduleName + '/header',
-        // authenticate,
-        projectPaymentFloorPlan.searchProjectHeader
-    )
-
     app.get(
         version + moduleName + "/projects",
         projectPaymentFloorPlan.getAllProjectsByIds
