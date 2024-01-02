@@ -74,6 +74,11 @@ module.exports = (app, version) => {
         authenticate,
         projectPaymentFloorPlan.createProjectPaymentFloorPlan
     )
+    app.get(
+        version + moduleName + '/header',
+        // authenticate,
+        projectPaymentFloorPlan.searchProjectHeader
+    )
 
     app.put(
         version + moduleName + '/update/:id',

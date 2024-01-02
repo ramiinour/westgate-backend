@@ -1015,7 +1015,12 @@ const updateProperty = async (req, res, next) => {
 
             currency: req.body.currency || undefined,
             area: req.body.area || undefined,
-            teamMemberId: req.body.teamMemberId || undefined
+            // teamMemberId: req.body.teamMemberId && req.body.teamMemberId != -1 ? parseInt(req.body.teamMemberId):parseInt(req.user.id),
+            teamMember: {
+                connect: {
+                    id: req.body.teamMemberId && req.body.teamMemberId != -1 ? parseInt(req.body.teamMemberId):parseInt(req.user.id)
+                },
+            },
         };
         property.city = {
             connect: {

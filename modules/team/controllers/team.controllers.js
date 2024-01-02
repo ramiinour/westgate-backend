@@ -54,6 +54,7 @@ const createTeam = async (req, res, next) => {
                 }))
             },
             experience: req.body.experience || 0,
+            position: req.body.position || "NA",
             languages: {
                 connect: req.body?.languages?.map(id => ({
                     id: parseInt(id),
@@ -253,7 +254,15 @@ const findAllTeam = async (req, res, next) => {
                         }
                     }
                 },
-                languages:true
+                languages:true,
+                // languages: {
+                //     include:{
+                //         id:true,
+                //         lang:true,
+                //     }
+                // }
+            // experience: true,
+            // languages:true,
                 
             },
             orderBy: {
@@ -347,6 +356,13 @@ const updateTeam = async (req, res, next) => {
                         },
                     }
                 }))
+            },
+            experience: req.body.experience || 0,
+            position: req.body.position || "NA",
+            languages: {
+                connect: req.body?.languages?.map(id => ({
+                    id: parseInt(id),
+                })),
             },
         };
         console.log('====================', parseInt(req.params.id))
