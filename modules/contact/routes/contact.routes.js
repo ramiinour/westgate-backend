@@ -16,6 +16,10 @@ console.log("Hello from contact routes");
         version + moduleName + '/createContactForProperties',
         getContactController.createContactForProperties
     );
+    app.post(
+        version + moduleName + '/generalContact',
+        getContactController.createGeneralContact
+    );
 
     app.get(
         version + moduleName + '/contact/:id',

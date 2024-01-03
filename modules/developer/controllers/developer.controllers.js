@@ -293,7 +293,6 @@ const getOneById = async (req, res, next) => {
 
     try {
 
-
         const data = await prisma.developer.findUnique({
             where: {
                 id: parseInt(id)
@@ -326,6 +325,17 @@ const getOneById = async (req, res, next) => {
                    select:{
                     id:true
                    }
+                },
+                agent: {
+                    select: {
+                        agent: {
+                            select: {
+                                id:true,
+                                firstName:true,
+                                lastName:true,
+                            }
+                        }
+                    }
                 }
                
             }

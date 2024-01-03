@@ -16,6 +16,12 @@ module.exports = (app, version) => {
     );
 
     app.get(
+        version + moduleName + '/:count/:page/:sort',
+        // authenticate,
+        articleController.fetchAllArticlesBySearch
+    );
+
+    app.get(
         version + moduleName + '/getOneArticle/:id',
         // authenticate,
         articleController.getOneArticle

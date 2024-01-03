@@ -7,6 +7,83 @@ const nodemailer = require("nodemailer");
 
 // const { sendEmail } = require('../../../configuration/config.mailer')
 
+
+const createGeneralContact = async (req, res, next) => {
+  try {
+
+    const { name, email, message, phone } = req.body;
+   
+
+    const contact = await Prisma.Contact.create({
+      data: {
+        name: name,
+        email: email,
+        message: message,
+        phone: phone,
+      },
+    });
+    
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "info@drclinica.com",
+        pass: "DrClinica@1202",
+      },
+    });
+
+    const emailTo = 'raminoreldaim@gmail.com'
+    // const teamMemberName = req.user.user.teamName
+
+    const mailOptions = {
+      from: "info@drclinica.com",
+      to: emailTo,
+      subject: `General Enquiry for WestGate from ${name}`,
+      html: `<p style="font-size: 16px;">Hi Marketing and Sales Team,</p>
+              <p style="font-size: 16px;">Hope this email finds you well</p>
+              <p style="font-size: 16px;">New Enquiry for Westgate</p>
+              <p style="font-size: 16px;">Here are the details:</p>
+              <table style="font-size: 16px; border-collapse: collapse; width: 100%;">
+                <tr >
+                  <td style="padding: 8px; text-align: left;"><strong>Name:</strong></td>
+                  <td style="padding: 8px; text-align: left;">${name}</td>
+                </tr>
+                <tr >
+                  <td style="padding: 8px; text-align: left;"><strong>Email:</strong></td>
+                  <td style="padding: 8px; text-align: left;">${email}</td>
+                </tr>
+                <tr >
+                  <td style="padding: 8px; text-align: left;"><strong>Phone:</strong></td>
+                  <td style="padding: 8px; text-align: left;">${phone}</td>
+                </tr>
+                <tr >
+                  <td style="padding: 8px; text-align: left;"><strong>Message:</strong></td>
+                  <td style="padding: 8px; text-align: left;">${message}</td>
+                </tr>
+              </table>
+              <p style="font-size: 16px;">Best regards,</p>`,
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
+
+    return Response.sendResponse(
+      res, {
+      msg: '310',
+      data: { contact },
+      lang: req.params.lang
+    });
+
+  } catch (err) {
+    console.log(err);
+    return next({ msg: 3067 })
+  }
+}
+
 const createContactForProjects = async (req, res, next) => {
   try {
 
@@ -324,5 +401,6 @@ module.exports = {
   findOneContact,
   findAllContact,
   updateContact,
-  deleteContact
+  deleteContact,
+  createGeneralContact
 };

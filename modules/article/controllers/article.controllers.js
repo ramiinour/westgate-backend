@@ -69,6 +69,72 @@ const getAllArticles = async (req, res, next) => {
 
 }
 
+
+const fetchAllArticlesBySearch = async (req, res, next) => {
+    const {search} = req.query;
+    const { count, page, sort } = req.params
+    const searchQuery = {
+        AND:[
+
+        ]
+    }
+    if(search && search != ""){
+        searchQuery.AND.push({
+            title:{contains:search}
+        })
+    }
+
+   
+    let sortObj = {}
+    //propertyPrice
+    switch(sort){
+        case "desc": sortObj = {createdon:"desc"}
+        break
+        case "asc": sortObj = {createdon:"asc"}
+        break;
+        default: sortObj = {createdon:"desc"}
+    }
+    try {
+        const data = await prisma.article.findMany({
+            take: parseInt(count),
+            skip: (parseInt(page) - 1) * parseInt(count),
+            where:{
+                ...searchQuery,
+               
+            },
+            orderBy: sortObj,
+            include: {
+                articleCategory: true
+            }
+
+        });
+
+        const articleCount = await prisma.article.findMany({
+            where:{
+                ...searchQuery
+            }
+        });
+
+        let totalPages = (parseInt(articleCount.length) / parseInt(count))
+        totalPages = Number.isInteger(totalPages) ? totalPages : parseInt(totalPages) + 1
+
+        return Response.sendResponse(res, {
+            msg: '703',
+            data: {
+                data: data,
+                count: articleCount.length,
+                page: page,
+                totalPages: totalPages
+            },
+            lang: req.params.lang
+        });
+    } catch (err) {
+        console.log(err)
+        return next({ msg: 3067 });
+    }
+
+}
+
 const getOneArticle = async (req, res, next) => {
     const { id } = req.params
 
@@ -259,5 +325,6 @@ module.exports = {
     getAllArticles,
     getOneArticle,
     deleteArticle,
-    createCategoryArticle
+    createCategoryArticle,
+    fetchAllArticlesBySearch
 };
