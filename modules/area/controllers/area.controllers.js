@@ -587,7 +587,7 @@ const getOnById = async (req, res, next) => {
 }
 
 const createArea = async (req, res, next) => {
-    const { name, about, infrastructure, attractions, mainImage, images, areaFeature, cityId } = req.body;
+    const { name, about, infrastructure, attractions, mainImage, images, cityId } = req.body;
     try {
 
         const checkIfNameExists = await prisma.area.findFirst({
@@ -597,36 +597,51 @@ const createArea = async (req, res, next) => {
         })
 
         if(checkIfNameExists) return next({ msg: 656 });
+        // areaFeature: {
+        //     create: areaFeature?.map(desc => ({
+        //         description: desc.description,
+        //         featureImage: {
+        //             create: desc.featureImage?.map(item => ({
+        //                 image: item?.image
+        //             })),
+        //         }
+        //     })),
 
-        const data = await prisma.area.create({
-            data: {
-                name,
-                about,
-                infrastructure,
-                attractions,
-                mainImage,
-                areaImage: {
-                    create: images?.map(i => ({
-                        image: i
-                    }))
-                },
-                areaFeature: {
-                    create: areaFeature?.map(desc => ({
-                        description: desc.description,
-                        featureImage: {
-                            create: desc.featureImage?.map(item => ({
-                                image: item?.image
-                            })),
-                        }
-                    })),
-
-                },
-                city: {
-                    connect: {
-                        id: parseInt(cityId)
-                    }
-                }
+        // },
+        const data = {
+            name,
+            about,
+            infrastructure,
+            attractions,
+            mainImage,
+            areaImage: {
+                create: images?.map(i => ({
+                    image: i
+                }))
             },
+            city: {
+                connect: {
+                    id: parseInt(cityId)
+                }
+            }  
+        }
+
+        if(req.body.areaFeature && req.body.areaFeature.length > 0) {
+            data.areaFeature = {
+                create: areaFeature?.map(desc => ({
+                    description: desc.description,
+                    featureImage: {
+                        create: desc.featureImage?.map(item => ({
+                            image: item?.image
+                        })),
+                    }
+                })),
+            }
+        }
+
+
+        const area = await prisma.area.create({
+           data,
             include: {
                 areaImage: true,
                 areaFeature: {
@@ -646,7 +661,7 @@ const createArea = async (req, res, next) => {
         return Response.sendResponse(res, {
             msg: '1000',
             data: {
-                data: data
+                data: area
             },
             lang: req.params.lang
         });
